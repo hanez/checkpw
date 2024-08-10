@@ -1,3 +1,14 @@
+/*
+ * checkpw is a program to check the validity of a users password on a
+ * Linux/PAM-based system.
+ *
+ * Usage: checkpw
+ *
+ * Returns 0 on success, 1 otherwise.
+ *
+ * License: MIT (see LICENSE)
+ */
+
 #include <security/pam_appl.h>
 #include <security/pam_misc.h>
 #include <stdio.h>
