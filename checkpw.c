@@ -13,6 +13,7 @@
  *
  * Returns 0 on success, 1 otherwise.
  *
+ * Author: Johannes Findeisen <you@hanez.org>
  * License: MIT (see LICENSE)
  */
 
