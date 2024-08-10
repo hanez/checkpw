@@ -1,3 +1,6 @@
+checkpw
+checkpw_interactive
+
 # ---> C
 # Prerequisites
 *.d
