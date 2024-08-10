@@ -256,10 +256,10 @@ int main(int argc, char *argv[]) {
     // Authenticate the user
     if (authenticate(username, password, verbose) == 0) {
         printf("Authenticated successfully.\n");
-        exit(0);
+        return 0;
     } else {
         printf("Authentication failed.\n");
-        exit(1);
+        return 1;
     }
 }
 
