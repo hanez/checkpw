@@ -26,7 +26,6 @@
 #include <termios.h>    // For terminal input settings
 #include <unistd.h>     // For getopt and access to user info
 
-
 #define MAX_USERNAME_LEN 32
 #define MAX_PASSWORD_LEN 256
 
