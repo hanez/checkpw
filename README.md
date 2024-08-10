@@ -2,8 +2,18 @@
 
 checkpw is a program that checks the validity of a users password on a Linux/PAM-based system.
 
+# Installation:
+
 ```
-Usage: ./checkpw [-u <username>] [-p <password>] [-i] [-v] [-h]
+git clone https://git.xw3.org/hanez/checkpw.git
+cd checkpw
+gcc -lpam -lpam_misc -Werror -o checkpw checkpw.c
+```
+
+# Usage:
+
+```
+./checkpw [-u <username>] [-p <password>] [-i] [-v] [-h]
 
 Options:
   -u <username>  Specify username.
@@ -18,12 +28,3 @@ Returns 0 on success, 1 otherwise.
 ```
 echo $?
 ```
-
-# Installation:
-
-```
-git clone https://git.xw3.org/hanez/checkpw.git
-cd checkpw
-gcc -lpam -lpam_misc -Werror -o checkpw checkpw.c
-```
-
