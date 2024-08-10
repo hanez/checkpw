@@ -1,8 +1,15 @@
-/*
+/**
  * checkpw is a program that checks the validity of a users password on a
  * Linux/PAM-based system.
  *
- * Usage: checkpw -u $USER -p $PASSWORD
+ * Usage: ./checkpw [-u <username>] [-p <password>] [-i] [-v] [-h]
+ *
+ * Options:
+ *   -u <username>  Specify username.
+ *   -p <password>  Specify password.
+ *   -i             Enable interactive mode to prompt for missing username/password.
+ *   -v             Enable verbose mode.
+ *   -h             Show this help
  *
  * Returns 0 on success, 1 otherwise.
  *
@@ -18,7 +25,7 @@
 #include <pwd.h>        // For struct passwd and getpwnam
 #include <termios.h>    // For terminal input settings
 
-#define MAX_USERNAME_LEN 256
+#define MAX_USERNAME_LEN 32
 #define MAX_PASSWORD_LEN 256
 
 #ifndef MIN_UID
@@ -154,12 +161,13 @@ void prompt_for_input(char *buffer, size_t size, const char *prompt, int hide_in
 }
 
 void print_usage(const char *prog_name) {
-    fprintf(stderr, "Usage: %s [-u <username>] [-p <password>] [-i] [-v]\n", prog_name);
+    fprintf(stderr, "Usage: %s [-u <username>] [-p <password>] [-i] [-v] [-h]\n", prog_name);
     fprintf(stderr, "Options:\n");
     fprintf(stderr, "  -u <username>  Specify username.\n");
     fprintf(stderr, "  -p <password>  Specify password.\n");
     fprintf(stderr, "  -i             Enable interactive mode to prompt for missing username/password.\n");
     fprintf(stderr, "  -v             Enable verbose mode.\n");
+    fprintf(stderr, "  -h             Show this help.\n");
 }
 
 int main(int argc, char *argv[]) {
@@ -170,22 +178,25 @@ int main(int argc, char *argv[]) {
     int opt;
 
     // Parse command-line arguments
-    while ((opt = getopt(argc, argv, "u:p:iv")) != -1) {
+    while ((opt = getopt(argc, argv, "u:p:hiv")) != -1) {
         switch (opt) {
             case 'u':
                 if (strlen(optarg) >= MAX_USERNAME_LEN) {
-                    fprintf(stderr, "Error: Username is too long (maximum %d characters).\n", MAX_USERNAME_LEN - 1);
+                    fprintf(stderr, "Error: Username is too long (maximum %d characters).\n", MAX_USERNAME_LEN);
                     exit(1);
                 }
                 strncpy(username, optarg, MAX_USERNAME_LEN - 1);
                 break;
             case 'p':
                 if (strlen(optarg) >= MAX_PASSWORD_LEN) {
-                    fprintf(stderr, "Error: Password is too long (maximum %d characters).\n", MAX_PASSWORD_LEN - 1);
+                    fprintf(stderr, "Error: Password is too long (maximum %d characters).\n", MAX_PASSWORD_LEN);
                     exit(1);
                 }
                 strncpy(password, optarg, MAX_PASSWORD_LEN - 1);
                 break;
+            case 'h':
+                print_usage(argv[0]);
+                exit(1);
             case 'i':
                 interactive = 1;  // Enable interactive mode
                 break;
@@ -244,10 +255,10 @@ int main(int argc, char *argv[]) {
     // Authenticate the user
     if (authenticate(username, password, verbose) == 0) {
         printf("Authenticated successfully.\n");
-        return 0;
+        exit(0);
     } else {
         printf("Authentication failed.\n");
-        return 1;
+        exit(1);
     }
 }
 
