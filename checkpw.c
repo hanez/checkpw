@@ -73,35 +73,31 @@ int authenticate(const char *username, const char *password, int verbose) {
     struct pam_credentials credentials = { password };
     struct pam_conv conv = { pam_conversation, &credentials };
 
-    if (verbose) {
+    if (verbose)
         printf("Starting PAM authentication for user '%s'.\n", username);
-    }
 
     retval = pam_start("login", username, &conv, &pamh);
 
     if (retval == PAM_SUCCESS) {
-        if (verbose) {
+        if (verbose)
             printf("PAM authentication initialized.\n");
-        }
         retval = pam_authenticate(pamh, 0); // Attempt to authenticate
     } else {
-        if (verbose) {
+        if (verbose)
             printf("pam_start failed: %s\n", pam_strerror(pamh, retval));
-        }
     }
 
     if (retval == PAM_SUCCESS) {
-        if (verbose) {
+        if (verbose)
             printf("User '%s' authenticated successfully.\n", username);
-        }
+
         retval = pam_acct_mgmt(pamh, 0); // Check account validity
-        if (retval != PAM_SUCCESS && verbose) {
+        if (retval != PAM_SUCCESS && verbose)
             printf("pam_acct_mgmt failed: %s\n", pam_strerror(pamh, retval));
-        }
+
     } else {
-        if (verbose) {
+        if (verbose)
             printf("pam_authenticate failed: %s\n", pam_strerror(pamh, retval));
-        }
     }
 
     if (pam_end(pamh, retval) != PAM_SUCCESS) {
@@ -174,8 +170,8 @@ void print_usage(const char *prog_name) {
 int main(int argc, char *argv[]) {
     char username[MAX_USERNAME_LEN] = {0};
     char password[MAX_PASSWORD_LEN] = {0};
-    int verbose = 0;       // Verbose mode flag
-    int interactive = 0;   // Interactive mode flag
+    int verbose = 0;
+    int interactive = 0;
     int opt;
 
     // Parse command-line arguments
@@ -199,10 +195,10 @@ int main(int argc, char *argv[]) {
                 print_usage(argv[0]);
                 exit(1);
             case 'i':
-                interactive = 1;  // Enable interactive mode
+                interactive = 1;
                 break;
             case 'v':
-                verbose = 1;      // Enable verbose mode
+                verbose = 1;
                 break;
             default:
                 print_usage(argv[0]);
@@ -249,9 +245,8 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    if (verbose) {
+    if (verbose)
         printf("User '%s' passed UID check (UID: %d).\n", username, pwd->pw_uid);
-    }
 
     // Authenticate the user
     if (authenticate(username, password, verbose) == 0) {
