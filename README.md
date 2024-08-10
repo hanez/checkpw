@@ -22,7 +22,7 @@ checkpw is a program that checks the validity of a users password on a Linux/PAM
 
 ## They idea?
 
-Exactly a program like this...
+Exactly a program like this... not more!
 
 # Installation:
 
@@ -34,23 +34,6 @@ sudo make install
 ```
 
 # Usage:
-
-```
-./checkpw [-u <username>] [-p <password>] [-i] [-v] [-h]
-
-Options:
-  -u <username>  Specify username.
-  -p <password>  Specify password.
-  -i             Enable interactive mode to prompt for missing username/password.
-  -v             Enable verbose mode.
-  -h             Show this help
-```
-
-Returns 0 on success, 1 otherwise.
-
-```
-echo $?
-```
 
 ```
 ./checkpw [-u <username>] [-p <password>] [-i] [-v] [-h]
