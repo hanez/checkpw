@@ -14,10 +14,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>  // For getopt and access to user info
-#include <pwd.h>     // For struct passwd and getpwuid
+#include <unistd.h>     // For getopt and access to user info
+#include <pwd.h>        // For struct passwd and getpwnam
+#include <termios.h>    // For terminal input settings
 
-#define MAX_USERNAME_LEN 32
+#define MAX_USERNAME_LEN 256
 #define MAX_PASSWORD_LEN 256
 
 #ifndef MIN_UID
@@ -42,9 +43,15 @@ int pam_conversation(int num_msg, const struct pam_message **msg,
     }
 
     for (i = 0; i < num_msg; i++) {
-        if (msg[i]->msg_style == PAM_PROMPT_ECHO_OFF || msg[i]->msg_style == PAM_PROMPT_ECHO_ON) {
-            response[i].resp = strdup(credentials->password);
-            response[i].resp_retcode = 0;
+        switch (msg[i]->msg_style) {
+            case PAM_PROMPT_ECHO_ON:
+            case PAM_PROMPT_ECHO_OFF:
+                response[i].resp = strdup(credentials->password);
+                response[i].resp_retcode = 0;
+                break;
+            default:
+                free(response);
+                return PAM_CONV_ERR;
         }
     }
 
@@ -69,6 +76,10 @@ int authenticate(const char *username, const char *password, int verbose) {
             printf("PAM authentication initialized.\n");
         }
         retval = pam_authenticate(pamh, 0); // Attempt to authenticate
+    } else {
+        if (verbose) {
+            printf("pam_start failed: %s\n", pam_strerror(pamh, retval));
+        }
     }
 
     if (retval == PAM_SUCCESS) {
@@ -76,6 +87,13 @@ int authenticate(const char *username, const char *password, int verbose) {
             printf("User '%s' authenticated successfully.\n", username);
         }
         retval = pam_acct_mgmt(pamh, 0); // Check account validity
+        if (retval != PAM_SUCCESS && verbose) {
+            printf("pam_acct_mgmt failed: %s\n", pam_strerror(pamh, retval));
+        }
+    } else {
+        if (verbose) {
+            printf("pam_authenticate failed: %s\n", pam_strerror(pamh, retval));
+        }
     }
 
     if (pam_end(pamh, retval) != PAM_SUCCESS) {
@@ -91,45 +109,119 @@ int authenticate(const char *username, const char *password, int verbose) {
     return (retval == PAM_SUCCESS ? 0 : 1); // 0 for success, 1 for failure
 }
 
+// Function to prompt user for input, optionally hiding input
+void prompt_for_input(char *buffer, size_t size, const char *prompt, int hide_input) {
+    printf("%s", prompt);
+    fflush(stdout);
+
+    if (hide_input) {
+        struct termios oldt, newt;
+        if (tcgetattr(STDIN_FILENO, &oldt) != 0) {
+            perror("tcgetattr");
+            exit(1);
+        }
+        newt = oldt;
+        newt.c_lflag &= ~(ECHO);
+        if (tcsetattr(STDIN_FILENO, TCSANOW, &newt) != 0) {
+            perror("tcsetattr");
+            exit(1);
+        }
+    }
+
+    if (fgets(buffer, size, stdin) == NULL) {
+        fprintf(stderr, "\nError reading input.\n");
+        if (hide_input) {
+            // Restore terminal settings
+            struct termios oldt;
+            tcgetattr(STDIN_FILENO, &oldt);
+            oldt.c_lflag |= ECHO;
+            tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+        }
+        exit(1);
+    }
+
+    // Remove trailing newline
+    buffer[strcspn(buffer, "\n")] = '\0';
+
+    if (hide_input) {
+        // Restore terminal settings
+        struct termios oldt;
+        tcgetattr(STDIN_FILENO, &oldt);
+        oldt.c_lflag |= ECHO;
+        tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+        printf("\n"); // Move to the next line after password input
+    }
+}
+
+void print_usage(const char *prog_name) {
+    fprintf(stderr, "Usage: %s [-u <username>] [-p <password>] [-i] [-v]\n", prog_name);
+    fprintf(stderr, "Options:\n");
+    fprintf(stderr, "  -u <username>  Specify username.\n");
+    fprintf(stderr, "  -p <password>  Specify password.\n");
+    fprintf(stderr, "  -i             Enable interactive mode to prompt for missing username/password.\n");
+    fprintf(stderr, "  -v             Enable verbose mode.\n");
+}
+
 int main(int argc, char *argv[]) {
-    char username[MAX_USERNAME_LEN];
-    char password[MAX_PASSWORD_LEN];
-    int verbose = 0;  // Verbose mode flag
+    char username[MAX_USERNAME_LEN] = {0};
+    char password[MAX_PASSWORD_LEN] = {0};
+    int verbose = 0;       // Verbose mode flag
+    int interactive = 0;   // Interactive mode flag
     int opt;
 
-    memset(username, 0, sizeof(username));
-    memset(password, 0, sizeof(password));
-
     // Parse command-line arguments
-    while ((opt = getopt(argc, argv, "u:p:v")) != -1) {
+    while ((opt = getopt(argc, argv, "u:p:iv")) != -1) {
         switch (opt) {
             case 'u':
                 if (strlen(optarg) >= MAX_USERNAME_LEN) {
-                    fprintf(stderr, "Error: Username is too long (maximum %d characters).\n", MAX_USERNAME_LEN);
+                    fprintf(stderr, "Error: Username is too long (maximum %d characters).\n", MAX_USERNAME_LEN - 1);
                     exit(1);
                 }
                 strncpy(username, optarg, MAX_USERNAME_LEN - 1);
                 break;
             case 'p':
                 if (strlen(optarg) >= MAX_PASSWORD_LEN) {
-                    fprintf(stderr, "Error: Password is too long (maximum %d characters).\n", MAX_PASSWORD_LEN);
+                    fprintf(stderr, "Error: Password is too long (maximum %d characters).\n", MAX_PASSWORD_LEN - 1);
                     exit(1);
                 }
                 strncpy(password, optarg, MAX_PASSWORD_LEN - 1);
                 break;
+            case 'i':
+                interactive = 1;  // Enable interactive mode
+                break;
             case 'v':
-                verbose = 1;  // Enable verbose mode
+                verbose = 1;      // Enable verbose mode
                 break;
             default:
-                fprintf(stderr, "Usage: %s -u <username> -p <password> [-v]\n", argv[0]);
+                print_usage(argv[0]);
                 exit(1);
         }
     }
 
-    // Check if both username and password are provided
-    if (username[0] == '\0' || password[0] == '\0') {
-        fprintf(stderr, "Usage: %s -u <username> -p <password> [-v]\n", argv[0]);
-        exit(1);
+    // If interactive mode is enabled, prompt for missing username and/or password
+    if (interactive) {
+        if (username[0] == '\0') {
+            prompt_for_input(username, sizeof(username), "Username: ", 0);
+            if (strlen(username) == 0) {
+                fprintf(stderr, "Error: Username cannot be empty.\n");
+                exit(1);
+            }
+        }
+
+        if (password[0] == '\0') {
+            prompt_for_input(password, sizeof(password), "Password: ", 1);
+            if (strlen(password) == 0) {
+                fprintf(stderr, "Error: Password cannot be empty.\n");
+                exit(1);
+            }
+        }
+    } else {
+        // If not in interactive mode, ensure username and password are provided
+        if (username[0] == '\0' || password[0] == '\0') {
+            fprintf(stderr, "Error: Username and password must be provided unless interactive mode is enabled.\n");
+            print_usage(argv[0]);
+            exit(1);
+        }
     }
 
     // Retrieve user information from the username
