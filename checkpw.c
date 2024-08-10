@@ -17,14 +17,15 @@
  * License: MIT (see LICENSE)
  */
 
+#include <pwd.h>        // For struct passwd and getpwnam
 #include <security/pam_appl.h>
 #include <security/pam_misc.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>     // For getopt and access to user info
-#include <pwd.h>        // For struct passwd and getpwnam
 #include <termios.h>    // For terminal input settings
+#include <unistd.h>     // For getopt and access to user info
+
 
 #define MAX_USERNAME_LEN 32
 #define MAX_PASSWORD_LEN 256
