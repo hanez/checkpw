@@ -46,9 +46,8 @@ int pam_conversation(int num_msg, const struct pam_message **msg,
     int i;
 
     response = (struct pam_response *)malloc(sizeof(struct pam_response) * num_msg);
-    if (response == NULL) {
+    if (response == NULL)
         return PAM_CONV_ERR;
-    }
 
     for (i = 0; i < num_msg; i++) {
         switch (msg[i]->msg_style) {
