@@ -80,9 +80,7 @@ int authenticate(const char *username, const char *password, int verbose) {
 
     if (pam_end(pamh, retval) != PAM_SUCCESS) {
         pamh = NULL;
-        if (verbose) {
-            fprintf(stderr, "Failed to release PAM authenticator\n");
-        }
+        fprintf(stderr, "Failed to release PAM authenticator\n");
         exit(1);
     }
 
@@ -130,26 +128,20 @@ int main(int argc, char *argv[]) {
 
     // Check if both username and password are provided
     if (username[0] == '\0' || password[0] == '\0') {
-        if (verbose) {
-            fprintf(stderr, "Usage: %s -u <username> -p <password> [-v]\n", argv[0]);
-        }
+        fprintf(stderr, "Usage: %s -u <username> -p <password> [-v]\n", argv[0]);
         exit(1);
     }
 
     // Retrieve user information from the username
     struct passwd *pwd = getpwnam(username);
     if (pwd == NULL) {
-        if (verbose) {
-            fprintf(stderr, "Error: User '%s' not found.\n", username);
-        }
+        fprintf(stderr, "Error: User '%s' not found.\n", username);
         exit(1);
     }
 
     // Check if the user's UID is below the minimum allowed UID
     if (pwd->pw_uid < MIN_UID) {
-        if (verbose) {
-            fprintf(stderr, "Error: User '%s' has a UID less than %d and is not allowed to authenticate.\n", username, MIN_UID);
-        }
+        fprintf(stderr, "Error: User '%s' has a UID less than %d and is not allowed to authenticate.\n", username, MIN_UID);
         exit(1);
     }
 
@@ -159,14 +151,10 @@ int main(int argc, char *argv[]) {
 
     // Authenticate the user
     if (authenticate(username, password, verbose) == 0) {
-        if (verbose) {
-            printf("Authenticated successfully.\n");
-        }
+        printf("Authenticated successfully.\n");
         return 0;
     } else {
-        if (verbose) {
-            printf("Authentication failed.\n");
-        }
+        printf("Authentication failed.\n");
         return 1;
     }
 }
