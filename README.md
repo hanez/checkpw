@@ -7,7 +7,7 @@ checkpw is a program to check the validity of a users password on a Linux/PAM-ba
 ```
 git clone https://git.xw3.org/hanez/checkpw.git
 cd checkpw
-gcc -lpam -lpam_misc -o checkpw checkpw.c
+gcc -lpam -lpam_misc -Werror -o checkpw checkpw.c
 ```
 
 # Usage:
