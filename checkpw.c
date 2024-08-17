@@ -197,7 +197,7 @@ int main(int argc, char *argv[]) {
                 break;
             case 'h':
                 print_usage(argv[0]);
-                exit(1);
+                exit(0);
             case 'i':
                 interactive = true;
                 break;
