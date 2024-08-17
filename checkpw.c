@@ -9,7 +9,7 @@
  *   -p <password>  Specify password.
  *   -i             Enable interactive mode to prompt for missing username/password.
  *   -v             Enable verbose mode.
- *   -h             Show this help
+ *   -h             Show this help.
  *
  * Returns 0 on success, 1 otherwise.
  *
