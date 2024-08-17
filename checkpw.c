@@ -2,7 +2,7 @@
  * checkpw is a program that checks the validity of a users password on a
  * Linux/PAM-based system.
  *
- * Usage: ./checkpw [-u <username>] [-p <password>] [-i] [-v] [-h]
+ * Usage: checkpw [-u <username>] [-p <password>] [-i] [-v] [-h]
  *
  * Options:
  *   -u <username>  Specify username.

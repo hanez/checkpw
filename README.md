@@ -31,7 +31,8 @@ sudo cp ./checkpw /usr/bin/
 # Usage:
 
 ```
-./checkpw [-u <username>] [-p <password>] [-i] [-v] [-h]
+checkpw -h
+Usage: checkpw [-u <username>] [-p <password>] [-i] [-v] [-h]
 
 Options:
   -u <username>  Specify username.
