@@ -7,3 +7,6 @@ clean:
 install:
 	cp ./checkpw /usr/bin/
 
+uninstall:
+	rm -f /usr/bin/checkpw
+
