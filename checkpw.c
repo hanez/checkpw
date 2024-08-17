@@ -29,6 +29,10 @@
 #define MAX_USERNAME_LEN 32
 #define MAX_PASSWORD_LEN 256
 
+#ifndef MAX_UID
+#define MAX_UID 1000
+#endif
+
 #ifndef MIN_UID
 #define MIN_UID 1000
 #endif
@@ -238,9 +242,9 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-    // Check if the user's UID is below the minimum allowed UID
-    if (pwd->pw_uid < MIN_UID) {
-        fprintf(stderr, "Error: User '%s' has a UID less than %d and is not allowed to authenticate.\n", username, MIN_UID);
+    // Check if the user's UID is below the minimum allowed UID and not higher than maximum allowed UID
+    if (pwd->pw_uid < MIN_UID || pwd->pw_uid > MAX_UID) {
+        fprintf(stderr, "Error: User '%s' has a UID less than %d or higher than %d and is not allowed to authenticate.\n", username, MIN_UID, MAX_UID);
         exit(1);
     }
 
