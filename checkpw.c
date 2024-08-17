@@ -20,6 +20,7 @@
 #include <pwd.h>        // For struct passwd and getpwnam
 #include <security/pam_appl.h>
 #include <security/pam_misc.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -71,8 +72,8 @@ int pam_conversation(int num_msg, const struct pam_message **msg,
 }
 
 int authenticate(const char *username, const char *password, int verbose) {
-    pam_handle_t *pamh = NULL;
     int retval;
+    pam_handle_t *pamh = NULL;
     struct pam_credentials credentials = { password };
     struct pam_conv conv = { pam_conversation, &credentials };
 
@@ -171,10 +172,10 @@ void print_usage(const char *prog_name) {
 }
 
 int main(int argc, char *argv[]) {
+    bool interactive = false;
+    bool verbose = false;
     char username[MAX_USERNAME_LEN] = {0};
     char password[MAX_PASSWORD_LEN] = {0};
-    int verbose = 0;
-    int interactive = 0;
     int opt;
 
     // Parse command-line arguments
@@ -198,10 +199,10 @@ int main(int argc, char *argv[]) {
                 print_usage(argv[0]);
                 exit(1);
             case 'i':
-                interactive = 1;
+                interactive = true;
                 break;
             case 'v':
-                verbose = 1;
+                verbose = true;
                 break;
             default:
                 print_usage(argv[0]);
