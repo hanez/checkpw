@@ -58,7 +58,7 @@ checkpw -i
 checkpw -u hanez -i
 ```
 
-#### None interactive mode with username and password provided as parameters:
+#### None interactive mode with username and password provided as arguments to checkpw:
 
 ```
 checkpw -u hanez -p password
