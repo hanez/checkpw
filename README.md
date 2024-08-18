@@ -44,6 +44,28 @@ Options:
 
 Returns 0 on success, 1 otherwise.
 
+## Examples:
+
+### Interactive mode:
+
+```
+checkpw -i
+```
+
+### Interactive mode only asking for a password:
+
+```
+checkpw -u hanez -i
+```
+
+### None interactive mode with username and password provided as parameters:
+
+```
+checkpw -u hanez -p password
+```
+
+### Request the result from the above commands:
+
 ```
 echo $?
 ```
