@@ -8,7 +8,7 @@ I needed a program to verify passwords of users on Linux based systems using PAM
 
 Exactly a program like this... not more!
 
-# Installation:
+## Installation:
 
 **WARNING:** Install this software with care. checkpw could easily be used for bruteforcing passwords from local users!
 
@@ -28,7 +28,7 @@ gcc -Werror -lpam -lpam_misc -DMAX_UID=1000 -DMIN_UID=1000 -o checkpw checkpw.c
 sudo cp ./checkpw /usr/bin/
 ```
 
-# Usage:
+## Usage:
 
 ```
 checkpw -h
@@ -44,27 +44,27 @@ Options:
 
 Returns 0 on success, 1 otherwise.
 
-## Examples:
+### Examples:
 
-### Interactive mode:
+#### Interactive mode:
 
 ```
 checkpw -i
 ```
 
-### Interactive mode only asking for a password:
+#### Interactive mode only asking for a password:
 
 ```
 checkpw -u hanez -i
 ```
 
-### None interactive mode with username and password provided as parameters:
+#### None interactive mode with username and password provided as parameters:
 
 ```
 checkpw -u hanez -p password
 ```
 
-### Request the result from the above commands:
+#### Request the result from the above commands:
 
 ```
 echo $?
