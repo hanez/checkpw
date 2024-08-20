@@ -70,3 +70,7 @@ checkpw -u hanez -p password
 echo $?
 ```
 
+## Links:
+
+ - [https://cr.yp.to/checkpwd.html](https://cr.yp.to/checkpwd.html)
+
