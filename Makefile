@@ -1,5 +1,5 @@
 all:
-	$(CC) -Werror -lpam -lpam_misc -o checkpw checkpw.c
+	$(CC) -Werror -o checkpw checkpw.c -lpam -lpam_misc
 
 clean:
 	rm -f ./checkpw
