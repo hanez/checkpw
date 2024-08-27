@@ -14,6 +14,7 @@
  * Returns 0 on success, 1 otherwise.
  *
  * Author: Johannes Findeisen <you@hanez.org>
+ * Version: 1.0.2
  * License: MIT (see LICENSE)
  */
 
