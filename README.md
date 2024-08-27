@@ -79,4 +79,5 @@ echo $?
 ## Links:
 
  - [https://cr.yp.to/checkpwd.html](https://cr.yp.to/checkpwd.html)
+ - [https://pamtester.sourceforge.net/](https://pamtester.sourceforge.net/)
 
