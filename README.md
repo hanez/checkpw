@@ -28,6 +28,12 @@ gcc -Werror -DMAX_UID=1000 -DMIN_UID=1000 -o checkpw checkpw.c -lpam -lpam_misc
 sudo cp ./checkpw /usr/bin/
 ```
 
+## Uninstall:
+
+```
+sudo make uninstall
+```
+
 ## Usage:
 
 ```
