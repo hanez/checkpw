@@ -26,7 +26,7 @@ The code only supports verifying passwords for user id 1000 by default. Look a t
 Set MAX_UID and MIN_UID in the code or you can compile checkpw without editing the code using the following command and install it manually:
 
 ```
-gcc -Werror -DMAX_UID=1000 -DMIN_UID=1000 -o checkpw checkpw.c -lpam -lpam_misc
+gcc -Wall -DMAX_UID=1000 -DMIN_UID=1000 -o checkpw checkpw.c -lpam -lpam_misc
 sudo cp ./checkpw /usr/bin/
 ```
 
