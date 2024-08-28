@@ -13,7 +13,7 @@ Exactly a program like this... not more!
 **WARNING:** Install this software with care. checkpw could easily be used for bruteforcing passwords from local users!
 
 ```
-git clone https://git.xw3.org/hanez/checkpw.git
+git clone https://git.xw3.org/xw3/checkpw.git
 cd checkpw
 make
 sudo make install
