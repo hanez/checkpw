@@ -159,7 +159,7 @@ void print_usage(const char *prog_name) {
     fprintf(stderr, "  -p <password>  Specify password.\n");
     fprintf(stderr, "  -i             Enable interactive mode to prompt for missing username/password.\n");
     fprintf(stderr, "  -v             Enable verbose mode.\n");
-    fprintf(stderr, "  -V             Show version.\n");
+    fprintf(stderr, "  -V             Show program version.\n");
     fprintf(stderr, "  -h             Show this help.\n");
 }
 

@@ -45,6 +45,7 @@ Options:
   -p <password>  Specify password.
   -i             Enable interactive mode to prompt for missing username/password.
   -v             Enable verbose mode.
+  -v             Show program version.
   -h             Show this help.
 ```
 
