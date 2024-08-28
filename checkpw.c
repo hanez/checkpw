@@ -2,19 +2,7 @@
  * checkpw is a program that checks the validity of a users password on a
  * Linux/PAM-based system.
  *
- * Usage: checkpw [-u <username>] [-p <password>] [-i] [-v] [-h]
- *
- * Options:
- *   -u <username>  Specify username.
- *   -p <password>  Specify password.
- *   -i             Enable interactive mode to prompt for missing username/password.
- *   -v             Enable verbose mode.
- *   -h             Show this help.
- *
- * Returns 0 on success, 1 otherwise.
- *
- * Author: Johannes Findeisen <you@hanez.org>
- * Version: 1.0.2
+ * Author: Johannes Findeisen <you@hanez.org> - 2024
  * License: MIT (see LICENSE)
  */
 
@@ -38,6 +26,8 @@
 #ifndef MIN_UID
 #define MIN_UID 1000
 #endif
+
+#define VERSION 1_0_3
 
 // Custom data structure to hold user-entered password
 struct pam_credentials {
@@ -169,18 +159,20 @@ void print_usage(const char *prog_name) {
     fprintf(stderr, "  -p <password>  Specify password.\n");
     fprintf(stderr, "  -i             Enable interactive mode to prompt for missing username/password.\n");
     fprintf(stderr, "  -v             Enable verbose mode.\n");
+    fprintf(stderr, "  -V             Show version.\n");
     fprintf(stderr, "  -h             Show this help.\n");
 }
 
 int main(int argc, char *argv[]) {
     bool interactive = false;
     bool verbose = false;
+    bool version = false;
     char username[MAX_USERNAME_LEN] = {0};
     char password[MAX_PASSWORD_LEN] = {0};
     int opt;
 
     // Parse command-line arguments
-    while ((opt = getopt(argc, argv, "u:p:hiv")) != -1) {
+    while ((opt = getopt(argc, argv, "u:p:hivV")) != -1) {
         switch (opt) {
             case 'u':
                 if (strlen(optarg) >= MAX_USERNAME_LEN) {
@@ -205,10 +197,18 @@ int main(int argc, char *argv[]) {
             case 'v':
                 verbose = true;
                 break;
+            case 'V':
+                version = true;
+                break;
             default:
                 print_usage(argv[0]);
                 exit(1);
         }
+    }
+
+    if (version) {
+        printf("1.0.3\n");
+        exit(0);
     }
 
     // If interactive mode is enabled, prompt for missing username and/or password
