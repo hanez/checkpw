@@ -21,6 +21,8 @@ sudo make install
 
 The code only supports verifying passwords for user id 1000 by default. Look a the code for some compile time options!
 
+### Manual installation:
+
 Set MAX_UID and MIN_UID in the code or you can compile checkpw without editing the code using the following command and install it manually:
 
 ```
@@ -45,7 +47,7 @@ Options:
   -p <password>  Specify password.
   -i             Enable interactive mode to prompt for missing username/password.
   -v             Enable verbose mode.
-  -v             Show program version.
+  -V             Show program version.
   -h             Show this help.
 ```
 
