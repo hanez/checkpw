@@ -1,6 +1,6 @@
 # checkpw
 
-checkpw is a program that checks the validity of a users password on a Linux/PAM-based system.
+checkpw is a program that checks the validity of a users password on a UNIX/PAM-based system.
 
 ## The idea behind:
 
