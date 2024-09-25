@@ -36,7 +36,8 @@ struct pam_credentials {
 
 // PAM conversation function to supply the password
 int pam_conversation(int num_msg, const struct pam_message **msg,
-                     struct pam_response **resp, void *appdata_ptr) {
+                     struct pam_response **resp, void *appdata_ptr)
+{
     struct pam_response *response = NULL;
     struct pam_credentials *credentials = (struct pam_credentials *)appdata_ptr;
     int i;
