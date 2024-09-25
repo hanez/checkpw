@@ -2,7 +2,7 @@
 
 checkpw is a program that checks the validity of a users password on a UNIX/PAM-based system.
 
-Currently only tested on Linux, but it should work on the AIX operating system, DragonFly BSD, FreeBSD, HP-UX, Linux, macOS, NetBSD and Solaris.
+Currently only tested on Linux, but it should work on the [AIX](https://en.wikipedia.org/wiki/IBM_AIX){:class="ext" target="_blank"}, [DragonFly BSD](https://www.dragonflybsd.org/){:class="ext" target="_blank"}, [FreeBSD](https://www.freebsd.org/){:class="ext" target="_blank"}, [HP-UX](https://en.wikipedia.org/wiki/HP-UX){:class="ext" target="_blank"}, [Linux](https://kernel.org/){:class="ext" target="_blank"}, [macOS](https://en.wikipedia.org/wiki/MacOS){:class="ext" target="_blank"}, [NetBSD](https://netbsd.org/){:class="ext" target="_blank"} and [Solaris](https://en.wikipedia.org/wiki/Oracle_Solaris){:class="ext" target="_blank"} operating system too. I will test API compatibility for all OS's soon... ;)
 
 ## The idea behind:
 
