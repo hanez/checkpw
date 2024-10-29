@@ -63,7 +63,8 @@ int pam_conversation(int num_msg, const struct pam_message **msg,
     return PAM_SUCCESS;
 }
 
-int authenticate(const char *username, const char *password, int verbose) {
+int authenticate(const char *username, const char *password, int verbose) 
+{
     int retval;
     pam_handle_t *pamh = NULL;
     struct pam_credentials credentials = { password };
@@ -110,7 +111,8 @@ int authenticate(const char *username, const char *password, int verbose) {
 }
 
 // Function to prompt user for input, optionally hiding input
-void prompt_for_input(char *buffer, size_t size, const char *prompt, int hide_input) {
+void prompt_for_input(char *buffer, size_t size, const char *prompt, int hide_input)
+{
     printf("%s", prompt);
     fflush(stdout);
 
@@ -153,7 +155,8 @@ void prompt_for_input(char *buffer, size_t size, const char *prompt, int hide_in
     }
 }
 
-void print_usage(const char *prog_name) {
+void print_usage(const char *prog_name)
+{
     fprintf(stderr, "\n");
     fprintf(stderr, "Usage: %s [-u <username>] [-p <password>] [-i] [-v] [-h]\n", prog_name);
     fprintf(stderr, "\n");
@@ -167,7 +170,8 @@ void print_usage(const char *prog_name) {
     fprintf(stderr, "\n");
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     bool interactive = false;
     bool verbose = false;
     bool version = false;
