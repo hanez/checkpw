@@ -154,7 +154,9 @@ void prompt_for_input(char *buffer, size_t size, const char *prompt, int hide_in
 }
 
 void print_usage(const char *prog_name) {
+    fprintf(stderr, "\n");
     fprintf(stderr, "Usage: %s [-u <username>] [-p <password>] [-i] [-v] [-h]\n", prog_name);
+    fprintf(stderr, "\n");
     fprintf(stderr, "Options:\n");
     fprintf(stderr, "  -u <username>  Specify username.\n");
     fprintf(stderr, "  -p <password>  Specify password.\n");
@@ -162,6 +164,7 @@ void print_usage(const char *prog_name) {
     fprintf(stderr, "  -v             Enable verbose mode.\n");
     fprintf(stderr, "  -V             Show program version.\n");
     fprintf(stderr, "  -h             Show this help.\n");
+    fprintf(stderr, "\n");
 }
 
 int main(int argc, char *argv[]) {
