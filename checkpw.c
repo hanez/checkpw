@@ -30,7 +30,8 @@
 #define VERSION 1_0_3
 
 // Custom data structure to hold user-entered password
-struct pam_credentials {
+struct pam_credentials
+{
     const char *password;
 };
 
@@ -63,7 +64,7 @@ int pam_conversation(int num_msg, const struct pam_message **msg,
     return PAM_SUCCESS;
 }
 
-int authenticate(const char *username, const char *password, int verbose) 
+int authenticate(const char *username, const char *password, int verbose)
 {
     int retval;
     pam_handle_t *pamh = NULL;
@@ -111,7 +112,8 @@ int authenticate(const char *username, const char *password, int verbose)
 }
 
 // Function to prompt user for input, optionally hiding input
-void prompt_for_input(char *buffer, size_t size, const char *prompt, int hide_input)
+void prompt_for_input(char *buffer, size_t size, const char *prompt,
+                      int hide_input)
 {
     printf("%s", prompt);
     fflush(stdout);
