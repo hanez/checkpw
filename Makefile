@@ -6,7 +6,7 @@ clean:
 
 install:
 	cp ./checkpw /usr/bin/
-	cp ./checkpw.1 /usr/share/man/man1/
+	install -g 0 -o 0 -m 0644 checkpw.1 /usr/share/man/man1/
 	gzip -f /usr/share/man/man1/checkpw.1
 	cp ./checkpw.h /usr/include/
 
