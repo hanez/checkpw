@@ -10,7 +10,7 @@
 #include <security/pam_appl.h>
 #include <security/pam_misc.h>
 
-#define VERSION "1.1.0"
+#define VERSION "1.1.1"
 
 #ifndef MAX_PASSWORD_LEN
 #define MAX_PASSWORD_LEN 256
