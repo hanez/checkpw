@@ -51,8 +51,8 @@ checkpw -h
 Usage: checkpw [-u <username>] [-p <password>] [-v] [-V] [-h]
 
 Options:
-  -u <username>  Specify username.
-  -p <password>  Specify password.
+  -u <username>  Set username.
+  -p <password>  Set password.
   -v             Enable verbose mode.
   -V             Print program version.
   -h             Show this help.
