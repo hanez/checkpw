@@ -6,7 +6,7 @@ Currently only tested on Linux, but it should work on the [AIX](https://en.wikip
 
 ## The idea
 
-I needed a program to verify passwords of users on Linux/UNIX systems using PAM that just return 0 on success and 1 on error.
+I needed a program to verify passwords of users on Linux/UNIX systems using PAM that just returns 0 on success and 1 on error.
 
 ## Building checkpw
 
