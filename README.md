@@ -1,6 +1,6 @@
 # checkpw
 
-checkpw is a program that checks the validity of a users password on a UNIX/PAM-based system.
+checkpw is a program that checks the validity of a users password on a UNIX/[PAM](https://en.wikipedia.org/wiki/Pluggable_Authentication_Module)-based system.
 
 Currently only tested on Linux, but it should work on the [AIX](https://en.wikipedia.org/wiki/IBM_AIX), [DragonFly BSD](https://www.dragonflybsd.org/), [FreeBSD](https://www.freebsd.org/), [HP-UX](https://en.wikipedia.org/wiki/HP-UX), [Linux](https://kernel.org/), [macOS](https://en.wikipedia.org/wiki/MacOS), [NetBSD](https://netbsd.org/) and [Solaris](https://en.wikipedia.org/wiki/Oracle_Solaris) operating system too.
 
