@@ -10,23 +10,7 @@
 #include <security/pam_appl.h>
 #include <security/pam_misc.h>
 
-#define VERSION "1.1.1"
-
-#ifndef MAX_PASSWORD_LEN
-#define MAX_PASSWORD_LEN 256
-#endif
-
-#ifndef MAX_USERNAME_LEN
-#define MAX_USERNAME_LEN 32
-#endif
-
-#ifndef MAX_UID
-#define MAX_UID 1000
-#endif
-
-#ifndef MIN_UID
-#define MIN_UID 1000
-#endif
+#define VERSION "1.1.2"
 
 bool authenticate(const char *username, const char *password, bool verbose);
 

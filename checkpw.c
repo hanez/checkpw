@@ -15,6 +15,22 @@
 
 #include "checkpw.h"
 
+#ifndef MAX_PASSWORD_LEN
+#define MAX_PASSWORD_LEN 256
+#endif
+
+#ifndef MAX_USERNAME_LEN
+#define MAX_USERNAME_LEN 32
+#endif
+
+#ifndef MAX_UID
+#define MAX_UID 1000
+#endif
+
+#ifndef MIN_UID
+#define MIN_UID 1000
+#endif
+
 // Function to prompt user for input, optionally hiding input
 void prompt_for_input(char *buffer, size_t size, const char *prompt,
                       bool hide_input)
