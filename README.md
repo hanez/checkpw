@@ -64,6 +64,8 @@ You can also use checkpw even without installing by just running the following c
 ./checkpk
 ```
 
+### Return codes
+
 checkpw returns 0 on success, 1 otherwise.
 
 ### Examples

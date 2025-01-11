@@ -9,10 +9,12 @@
 #include <pwd.h>
 #include <security/pam_appl.h>
 #include <security/pam_misc.h>
+#include <stdbool.h>
 
-#define VERSION "1.1.2"
+#define VERSION "1.1.3"
 
-bool authenticate(const char *username, const char *password, bool verbose);
+bool checkpw_authenticate(const char *username, const char *password,
+                          bool verbose);
 
 int pam_conversation(int num_msg, const struct pam_message **msg,
                      struct pam_response **resp, void *appdata_ptr);
@@ -22,7 +24,8 @@ struct pam_credentials
     const char *password;
 };
 
-bool authenticate(const char *username, const char *password, bool verbose)
+bool checkpw_authenticate(const char *username, const char *password,
+                          bool verbose)
 {
     int retval;
     pam_handle_t *pamh = NULL;

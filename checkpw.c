@@ -6,14 +6,14 @@
  * License: Apache-2.0 (see LICENSE)
  */
 
+#include "checkpw.h"
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <termios.h>
 #include <unistd.h>
-
-#include "checkpw.h"
 
 #ifndef MAX_PASSWORD_LEN
 #define MAX_PASSWORD_LEN 256
@@ -173,7 +173,7 @@ int main(int argc, char *argv[])
         printf("User '%s' passed UID check (UID: %d).\n", username,
                pwd->pw_uid);
 
-    if (authenticate(username, password, verbose) == true) {
+    if (checkpw_authenticate(username, password, verbose) == true) {
         printf("Authenticated successfully.\n");
         return 0;
     } else {
