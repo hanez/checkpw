@@ -61,7 +61,7 @@ Options:
 You can also use checkpw even without installing by just running the following command:
 
 ```
-./checkpk
+./checkpw
 ```
 
 ### Return codes
