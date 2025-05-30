@@ -15,7 +15,7 @@ You need the PAM development package installed. On Alpine it is named linux-pam-
 ## Building checkpw
 
 ```
-git clone https://git.xw3.org/xw3/checkpw.git
+git clone https://git.xw3.org/hanez/checkpw.git
 cd checkpw
 make
 ```
