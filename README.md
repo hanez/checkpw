@@ -8,6 +8,10 @@ Currently checkpw is only tested on Linux, but it should work on a [AIX](https:/
 
 I needed a program to verify passwords of users on Linux/UNIX systems using PAM that just returns 0 on success and 1 on error.
 
+## Requirements
+
+You need the PAM development package installed. On Alpine it is named linux-pam-dev, on Debian based systems it is libpam0g-dev.
+
 ## Building checkpw
 
 ```
@@ -103,7 +107,7 @@ See LICENSE for details.
 
 ## Links
 
- - [Homepage of checkpw](https://git.xw3.org/xw3/checkpw)
+ - [https://git.xw3.org/hanez/checkpw](https://git.xw3.org/hanez/checkpw)
  - [https://cr.yp.to/checkpwd.html](https://cr.yp.to/checkpwd.html)
  - [https://pamtester.sourceforge.net/](https://pamtester.sourceforge.net/)
 
