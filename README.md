@@ -2,7 +2,7 @@
 
 chkpw is a program that checks the validity of a users password on a UNIX/[PAM](https://en.wikipedia.org/wiki/Pluggable_Authentication_Module)-based system.
 
-Currently checkpw is only tested on Linux, but it should work on a [AIX](https://en.wikipedia.org/wiki/IBM_AIX), [DragonFly BSD](https://www.dragonflybsd.org/), [FreeBSD](https://www.freebsd.org/), [HP-UX](https://en.wikipedia.org/wiki/HP-UX), [Linux](https://kernel.org/), [macOS](https://en.wikipedia.org/wiki/MacOS), [NetBSD](https://netbsd.org/) and [Solaris](https://en.wikipedia.org/wiki/Oracle_Solaris) operating system too.
+Currently chkpw is only tested on Linux, but it should work on a [AIX](https://en.wikipedia.org/wiki/IBM_AIX), [DragonFly BSD](https://www.dragonflybsd.org/), [FreeBSD](https://www.freebsd.org/), [HP-UX](https://en.wikipedia.org/wiki/HP-UX), [Linux](https://kernel.org/), [macOS](https://en.wikipedia.org/wiki/MacOS), [NetBSD](https://netbsd.org/) and [Solaris](https://en.wikipedia.org/wiki/Oracle_Solaris) operating system too.
 
 ## The idea
 
@@ -12,11 +12,11 @@ I needed a program to verify passwords of users on Linux/UNIX systems using PAM 
 
 You need the PAM development package installed. On Alpine it is named linux-pam-dev, on Debian based systems it is libpam0g-dev.
 
-## Building checkpw
+## Building chkpw
 
 ```
 git clone https://git.xw3.org/hanez/chkpw.git
-cd checkpw
+cd chkpw
 make
 ```
 
@@ -51,7 +51,7 @@ sudo make uninstall
 ## Usage
 
 ```
-checkpw -h
+chkpw -h
 Usage: chkpw [-u <username>] [-p <password>] [-v] [-V] [-h]
 
 Options:
@@ -87,7 +87,7 @@ chkpw
 chkpw -u hanez
 ```
 
-#### None interactive mode with username and password provided as arguments to checkpw
+#### None interactive mode with username and password provided as arguments to chkpw
 
 ```
 chkpw -u hanez -p password
