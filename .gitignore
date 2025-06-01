@@ -1,5 +1,5 @@
-checkpw
-checkpw.o
-checkpw.1.gz
+chkpw
+chkpw.o
+chkpw.1.gz
 test
 test.c

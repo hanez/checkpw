@@ -1,12 +1,12 @@
 /**
- * checkpw is a program that checks the validity of a users password on a
+ * chkpw is a program that checks the validity of a users password on a
  * UNIX/PAM-based system.
  *
  * Author: Johannes Findeisen <you@hanez.org> - 2024
  * License: Apache-2.0 (see LICENSE)
  */
 
-#include "checkpw.h"
+#include "chkpw.h"
 
 #include <stdbool.h>
 #include <stdio.h>
