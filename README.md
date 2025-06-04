@@ -108,7 +108,7 @@ See LICENSE for details.
 ## Links
 
  - [https://git.xw3.org/hanez/chkpwd](https://git.xw3.org/hanez/chkpwd)
- - [https://linux.die.net/man/8/unix_chkpwdd](https://linux.die.net/man/8/unix_chkpwd)
+ - [https://linux.die.net/man/8/unix_chkpwd](https://linux.die.net/man/8/unix_chkpwd)
  - [https://cr.yp.to/checkpwd.html](https://cr.yp.to/checkpwd.html)
  - [https://pamtester.sourceforge.net/](https://pamtester.sourceforge.net/)
 
