@@ -1,5 +1,5 @@
 /**
- * chkpw.h is part of chkpw, a program that checks the validity of a users
+ * chkpwd.h is part of chkpwd, a program that checks the validity of a users
  * password on a UNIX/PAM-based system.
  *
  * Author: Johannes Findeisen <you@hanez.org> - 2025
@@ -11,7 +11,7 @@
 #include <security/pam_misc.h>
 #include <stdbool.h>
 
-#define VERSION "1.2.0"
+#define VERSION "1.3.0"
 
 bool checkpw_authenticate(const char *username, const char *password,
                           bool verbose);
