@@ -111,4 +111,7 @@ See LICENSE for details.
  - [https://linux.die.net/man/8/unix_chkpwd](https://linux.die.net/man/8/unix_chkpwd)
  - [https://cr.yp.to/checkpwd.html](https://cr.yp.to/checkpwd.html)
  - [https://pamtester.sourceforge.net/](https://pamtester.sourceforge.net/)
+ - [https://github.com/AlexanderZhirov/chkpass](https://github.com/AlexanderZhirov/chkpass)
+ - [https://github.com/ViKingIX/pam_test](https://github.com/ViKingIX/pam_test)
+ - [https://github.com/Dareka826/chk_pw](https://github.com/Dareka826/chk_pw)
 
