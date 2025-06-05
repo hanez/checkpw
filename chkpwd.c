@@ -3,6 +3,7 @@
  * UNIX/PAM-based system.
  *
  * Author: Johannes Findeisen <you@hanez.org> - 2024
+ * Homepage: https://git.xw3.org/hanez/chkpwd
  * License: Apache-2.0 (see LICENSE)
  */
 
