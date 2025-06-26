@@ -11,7 +11,6 @@ chkusr is a set of programs to verify information about a user on a UNIX based s
     * [Uninstall](#uninstall)
  * [chkgrp](#chkgrp)
  * [chkpwd](#chkpwd)
-       * [Custom build](#custom-build)
     * [Usage](#usage)
        * [Return codes](#return-codes)
        * [Examples](#examples)
@@ -19,6 +18,7 @@ chkusr is a set of programs to verify information about a user on a UNIX based s
           * [Interactive mode only asking for a password](#interactive-mode-only-asking-for-a-password)
           * [None interactive mode with username and password provided as arguments to chkpwd](#none-interactive-mode-with-username-and-password-provided-as-arguments-to-chkpwd)
           * [Request the result from the above commands](#request-the-result-from-the-above-commands)
+    * [Custom build](#custom-build)
  * [Links](#links)
  * [License](#license)
 
@@ -74,13 +74,7 @@ chkpwd is a program that checks the validity of a users password on a UNIX/[PAM]
 
 The code only supports verifying passwords for user id 1000 by default. Look at the file chkpwd.h for some compile time options!
 
-#### Custom build
 
-Set MAX_UID and MIN_UID at compile time:
-
-```
-gcc -Wall -DMAX_UID=1000 -DMIN_UID=1000 -o chkpwd chkpwd.c -lpam -lpam_misc
-```
 
 ### Usage
 
@@ -101,6 +95,8 @@ You can also use chkpwd even without installing by just running the following co
 ```
 ./chkpwd
 ```
+
+
 
 #### Return codes
 
@@ -130,6 +126,14 @@ chkpwd -u hanez -p password
 
 ```
 echo $?
+```
+
+#### Custom build
+
+Set MAX_UID and MIN_UID at compile time:
+
+```
+gcc -Wall -DMAX_UID=1000 -DMIN_UID=1000 -o chkpwd chkpwd.c -lpam -lpam_misc
 ```
 
 ## Links
