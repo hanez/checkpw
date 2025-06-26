@@ -4,6 +4,26 @@
 
 chkusr is a set of programs to verify information about a user on a UNIX based systems.
 
+ * [The idea](#the-idea)
+    * [Requirements](#requirements)
+    * [Building chkusr](#building-chkusr)
+    * [Installation](#installation)
+    * [Uninstall](#uninstall)
+ * [chkgrp](#chkgrp)
+ * [chkpwd](#chkpwd)
+       * [Custom build](#custom-build)
+    * [Usage](#usage)
+       * [Return codes](#return-codes)
+       * [Examples](#examples)
+          * [Interactive mode asking for a username and a password](#interactive-mode-asking-for-a-username-and-a-password)
+          * [Interactive mode only asking for a password](#interactive-mode-only-asking-for-a-password)
+          * [None interactive mode with username and password provided as arguments to chkpwd](#none-interactive-mode-with-username-and-password-provided-as-arguments-to-chkpwd)
+          * [Request the result from the above commands](#request-the-result-from-the-above-commands)
+ * [Links](#links)
+ * [License](#license)
+
+
+
 ## The idea
 
 I needed some programs to verify some information about users and groups on a Linux/UNIX system just returning 0 on success and 1 on error.
