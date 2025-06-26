@@ -1,5 +1,12 @@
+*.o
+*.so
+chkgrp
+chkgrp-min
+chkgrp-native
+chkgrp-native-min
+chkgrp-native-min-extended
+chkgrp-ng
 chkpwd
-chkpwd.o
 chkpwd.1.gz
 test
 test.c
