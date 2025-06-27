@@ -2,7 +2,7 @@
 
 # chkusr
 
-chkusr is a set of programs to verify information about a user on a UNIX based systems.
+chkusr is a set of programs to verify information about a user on UNIX based systems.
 
  * [The idea](#the-idea)
     * [Requirements](#requirements)
