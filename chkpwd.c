@@ -8,6 +8,7 @@
  */
 
 #include "chkpwd.h"
+#include "version.h"
 
 #include <stdbool.h>
 #include <stdio.h>

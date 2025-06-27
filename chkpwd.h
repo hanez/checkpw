@@ -1,18 +1,16 @@
 /**
- * chkpwd.h is part of chkpwd, a program that checks the validity of a users
- * password on a UNIX/PAM-based system.
+ * chkpwd.h is part of chkusr, a set of programs to verify information about
+ * a user on UNIX based systems.
  *
  * Author: Johannes Findeisen <you@hanez.org> - 2025
- * Homepage: https://git.xw3.org/hanez/chkpwd
+ * Homepage: https://git.xw3.org/hanez/chkusr
  * License: Apache-2.0 (see LICENSE)
  */
 
 #include <pwd.h>
+#include <stdbool.h>
 #include <security/pam_appl.h>
 #include <security/pam_misc.h>
-#include <stdbool.h>
-
-#define VERSION "1.3.1"
 
 bool checkpw_authenticate(const char *username, const char *password,
                           bool verbose);

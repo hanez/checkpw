@@ -140,7 +140,7 @@ gcc -Wall -DMAX_UID=1000 -DMIN_UID=1000 -o chkpwd chkpwd.c -lpam -lpam_misc
 
 ## License
 
-chkpwd is licensed under the Apache License, Version 2.0.
+chkusr is licensed under the Apache License, Version 2.0.
 
 See LICENSE for details.
 

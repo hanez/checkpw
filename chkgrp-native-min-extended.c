@@ -3,9 +3,11 @@
  * of a group.
  *
  * Author: Johannes Findeisen <you@hanez.org> - 2025
- * Homepage: https://git.xw3.org/hanez/chkgrp
+ * Homepage: https://git.xw3.org/hanez/chkusr
  * License: Apache-2.0 (see LICENSE)
  */
+
+#include "version.h"
 
 #include <stdio.h>
 #include <stdlib.h>
