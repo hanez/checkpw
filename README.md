@@ -130,7 +130,9 @@ gcc -Wall -DMAX_UID=1000 -DMIN_UID=1000 -o chkpwd chkpwd.c -lpam -lpam_misc
 
 ## Links
 
- - [https://git.xw3.org/hanez/chkpwd](https://git.xw3.org/hanez/chkpwd)
+ - [https://git.xw3.org/hanez/chkusr](https://git.xw3.org/hanez/chkusr)
+ - [https://github.com/shadow-maint/shadow](https://github.com/shadow-maint/shadow)
+ - [https://github.com/linux-pam/linux-pam](https://github.com/linux-pam/linux-pam)
  - [https://www.man7.org/linux/man-pages/man8/unix_chkpwd.8.html](https://www.man7.org/linux/man-pages/man8/unix_chkpwd.8.html)
  - [https://cr.yp.to/checkpwd.html](https://cr.yp.to/checkpwd.html)
  - [https://pamtester.sourceforge.net/](https://pamtester.sourceforge.net/)
