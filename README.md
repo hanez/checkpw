@@ -22,8 +22,6 @@ chkusr is a set of programs to verify information about a user on a UNIX based s
  * [Links](#links)
  * [License](#license)
 
-
-
 ## The idea
 
 I needed some programs to verify some information about users and groups on a Linux/UNIX system just returning 0 on success and 1 on error.
@@ -66,15 +64,11 @@ chkgrp is a program to verify if a user is a member of a group.
 
 More information will follow... Actually there are multiple programs with some different behavior. I will write more about this, but for now I will not.
 
-
 ## chkpwd
 
 chkpwd is a program that checks the validity of a users password on a UNIX/[PAM](https://en.wikipedia.org/wiki/Pluggable_Authentication_Module)-based system.
 
-
 The code only supports verifying passwords for user id 1000 by default. Look at the file chkpwd.h for some compile time options!
-
-
 
 ### Usage
 
@@ -95,8 +89,6 @@ You can also use chkpwd even without installing by just running the following co
 ```
 ./chkpwd
 ```
-
-
 
 #### Return codes
 
